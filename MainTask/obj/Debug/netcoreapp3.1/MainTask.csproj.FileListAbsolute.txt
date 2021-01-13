@@ -1,0 +1,13 @@
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\bin\Debug\netcoreapp3.1\MainTask.exe
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\bin\Debug\netcoreapp3.1\MainTask.deps.json
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\bin\Debug\netcoreapp3.1\MainTask.runtimeconfig.json
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\bin\Debug\netcoreapp3.1\MainTask.runtimeconfig.dev.json
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\bin\Debug\netcoreapp3.1\MainTask.dll
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\bin\Debug\netcoreapp3.1\MainTask.pdb
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\obj\Debug\netcoreapp3.1\MainTask.csprojAssemblyReference.cache
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\obj\Debug\netcoreapp3.1\MainTask.AssemblyInfoInputs.cache
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\obj\Debug\netcoreapp3.1\MainTask.AssemblyInfo.cs
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\obj\Debug\netcoreapp3.1\MainTask.csproj.CoreCompileInputs.cache
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\obj\Debug\netcoreapp3.1\MainTask.dll
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\obj\Debug\netcoreapp3.1\MainTask.pdb
+C:\Users\Dalius\Desktop\SneakyBoxTasks\MainTask\obj\Debug\netcoreapp3.1\MainTask.genruntimeconfig.cache
