@@ -35,15 +35,54 @@ namespace MyCitiesWeatherForecast.API
             };
         }
 
-        public static string GetAds()
+        public static string GetCities()
         {
-            string url = @"http://localhost:56795/api/ad";
+            string url = @"https://api.meteo.lt/v1/places";
             using (var msg = new HttpRequestMessage(HttpMethod.Get, url))
             {
                 var response = Policy.WrapAsync(bulkhead, retry).ExecuteAsync(async () => await client.SendAsync(msg));
                 if (response.Result.StatusCode == HttpStatusCode.OK)
+                {
                     return response.Result.Content.ReadAsStringAsync().Result;
-                return null;
+                }
+                else
+                {
+                    return response.Result.StatusCode.ToString();
+                }
+            }
+        }
+
+        public static string GetCityInfo(string cityCode)
+        {
+            string url = @"https://api.meteo.lt/v1/places/" + cityCode;
+            using (var msg = new HttpRequestMessage(HttpMethod.Get, url))
+            {
+                var response = Policy.WrapAsync(bulkhead, retry).ExecuteAsync(async () => await client.SendAsync(msg));
+                if (response.Result.StatusCode == HttpStatusCode.OK)
+                {
+                    return response.Result.Content.ReadAsStringAsync().Result;
+                }
+                else
+                {
+                    return response.Result.StatusCode.ToString();
+                }
+            }
+        }
+
+        public static string GetCityWeatherForecast(string cityCode)
+        {
+            string url = @"https://api.meteo.lt/v1/places/" + cityCode + "/forecasts/long-term";
+            using (var msg = new HttpRequestMessage(HttpMethod.Get, url))
+            {
+                var response = Policy.WrapAsync(bulkhead, retry).ExecuteAsync(async () => await client.SendAsync(msg));
+                if (response.Result.StatusCode == HttpStatusCode.OK)
+                {
+                    return response.Result.Content.ReadAsStringAsync().Result;
+                }
+                else
+                {
+                    return response.Result.StatusCode.ToString();
+                }
             }
         }
     }
