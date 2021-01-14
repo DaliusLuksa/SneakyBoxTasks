@@ -38,6 +38,11 @@ namespace MyCitiesWeatherForecast.Entities
 
                 entity.Property(e => e.Id).HasColumnType("int(11)");
 
+                entity.Property(e => e.Code)
+                    .IsRequired()
+                    .HasColumnName("code")
+                    .HasMaxLength(255);
+
                 entity.Property(e => e.Description)
                     .HasColumnName("description")
                     .HasMaxLength(255)
