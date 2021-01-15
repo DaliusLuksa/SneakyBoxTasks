@@ -2,11 +2,8 @@
 using Polly.Bulkhead;
 using Polly.Retry;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace MyCitiesWeatherForecast.API
 {
@@ -35,6 +32,10 @@ namespace MyCitiesWeatherForecast.API
             };
         }
 
+        /// <summary>
+        /// Gets all cities from MeteoAPI
+        /// </summary>
+        /// <returns>Json string of all cities</returns>
         public static string GetCities()
         {
             string url = @"https://api.meteo.lt/v1/places";
@@ -52,6 +53,11 @@ namespace MyCitiesWeatherForecast.API
             }
         }
 
+        /// <summary>
+        /// Gets specific city info from MeteoAPI
+        /// </summary>
+        /// <param name="cityCode">City code</param>
+        /// <returns>Json string with city information</returns>
         public static string GetCityInfo(string cityCode)
         {
             string url = @"https://api.meteo.lt/v1/places/" + cityCode;
@@ -69,6 +75,11 @@ namespace MyCitiesWeatherForecast.API
             }
         }
 
+        /// <summary>
+        /// Gets specific city's weather information from MeteoAPI
+        /// </summary>
+        /// <param name="cityCode">City code</param>
+        /// <returns>Json string with city's weather information</returns>
         public static string GetCityWeatherForecast(string cityCode)
         {
             string url = @"https://api.meteo.lt/v1/places/" + cityCode + "/forecasts/long-term";
