@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyCitiesWeatherForecast.API;
 using MyCitiesWeatherForecast.Entities;
@@ -21,28 +19,31 @@ namespace MyCitiesWeatherForecast.Controllers
             _context = context;
         }
 
+        // Method for getting cities list from the MeteoAPI
         [HttpGet]
         public IEnumerable<MeteoCity> GetCitiesList()
         {
             return JsonConvert.DeserializeObject<IEnumerable<MeteoCity>>(MeteoAPI.GetCities());
         }
 
+        // Method for getting cities weather information
         [HttpGet("mylist")]
         public IEnumerable<object> GetCitiesWeather()
         {
             // take list from the DB
             var citiesData = _context.City.ToList();
 
+            // populate new list with min and max temps from the MeteoAPI
             List<MyList> myList = new List<MyList>(); 
-            foreach (var code in citiesData)
+            foreach (var city in citiesData)
             {
-                var data = JsonConvert.DeserializeObject<MeteoCityInfo>(MeteoAPI.GetCityWeatherForecast(code.Code));
+                var data = JsonConvert.DeserializeObject<MeteoCityInfo>(MeteoAPI.GetCityWeatherForecast(city.Code));
                 if (data != null)
                 {
                     MyList newItem = new MyList();
-                    newItem.Id = code.Id;
+                    newItem.Id = city.Id;
                     newItem.CityName = data.Place.Name;
-                    newItem.Description = code.Description;
+                    newItem.Description = city.Description;
                     newItem.MaxTemp = data.ForecastTimestamps.Max(o => o.AirTemperature);
                     newItem.MinTemp = data.ForecastTimestamps.Min(o => o.AirTemperature);
                     myList.Add(newItem);
@@ -52,6 +53,7 @@ namespace MyCitiesWeatherForecast.Controllers
             return myList;
         }
 
+        // Method for adding new city to the database
         [HttpPost]
         public string AddNewCity(City newCity)
         {
@@ -71,6 +73,7 @@ namespace MyCitiesWeatherForecast.Controllers
             }
         }
 
+        // Method for deleting existing city from the database
         [HttpDelete("{id}")]
         public string DeleteCity([FromRoute] int id)
         {
@@ -84,10 +87,11 @@ namespace MyCitiesWeatherForecast.Controllers
             }
             catch
             {
-                return "Failed";
+                return "Failed to delete city";
             }
         }
 
+        // Method for deleting all cities from the database
         [HttpDelete()]
         public string DeleteAllCities()
         {
