@@ -22,4 +22,5 @@ table {
 .buttonDivas {
     display: inline-block;
     vertical-align: middle !important;
+    margin-right: 10px;
 }

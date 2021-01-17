@@ -30,7 +30,7 @@ export class Home extends Component {
                                             <select id="category" required className="bg-primary custom-select bg-light border-0" name="cityCode">
                                                 <option value="" disabled defaultValue>City</option>
                                                 {this.state.cityList.map(city =>
-                                                    <option key={city.id} value={city.code}>{city.name}</option>
+                                                    <option key={city.code} value={city.code}>{city.name}</option>
                                                 )}
                                             </select>
                                         </div>
@@ -40,7 +40,7 @@ export class Home extends Component {
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text border-0">Description</span>
                                                 </div>
-                                                <textarea required className="form-control border-0" name="Description" aria-label="Description" rows="6" maxLength="255"></textarea>
+                                                <textarea className="form-control border-0" name="Description" aria-label="Description" rows="6" maxLength="255"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -61,8 +61,8 @@ export class Home extends Component {
                     <p>Here you can see your city list.</p>
                 </div>
                 <div className="col buttonDiv">
-                    <button className="btn btn-sm btn-primary buttonDivas" data-toggle="modal" data-target="#exampleModalCenter">Add new city</button>
-                    <button className="btn btn-sm btn-primary buttonDivas" onClick={this.deleteAllCities}>Delete all cities</button>
+                    <button className="btn btn-outline-primary buttonDivas" data-toggle="modal" data-target="#exampleModalCenter">Add new city</button>
+                    <button className="btn btn-outline-danger buttonDivas" onClick={this.deleteAllCities}>Delete all cities</button>
                 </div>
 
                 <table className='table table-striped' aria-labelledby="tabelLabel">
@@ -82,7 +82,7 @@ export class Home extends Component {
                                 <td style={{ textAlign: 'left' }}>{forecast.description}</td>
                                 <td>{forecast.maxTemp}</td>
                                 <td>{forecast.minTemp}</td>
-                                <td> <button id={forecast.id} className="btn btn-sm btn-primary" onClick={this.deleteCity}>Delete</button> </td>
+                                <td> <button id={forecast.id} className="btn btn-danger" onClick={this.deleteCity}>Delete</button> </td>
                             </tr>
                         )}
                     </tbody>
